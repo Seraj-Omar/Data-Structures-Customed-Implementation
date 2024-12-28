@@ -1,5 +1,5 @@
 package bst;
-public class CustomedBST<T extends Comparable<T>> {
+public class MyBST<T extends Comparable<T>> {
 
     private static class Node<T> {
         T data;
@@ -12,7 +12,7 @@ public class CustomedBST<T extends Comparable<T>> {
     }
 
     private Node<T> root;
-    public CustomedBST() {
+    public MyBST() {
         this.root = null;
     }
 
@@ -129,7 +129,7 @@ public class CustomedBST<T extends Comparable<T>> {
     }
 
     public static void main(String[] args) {
-        CustomedBST<Integer> bst = new CustomedBST<>();
+        MyBST<Integer> bst = new MyBST<>();
         bst.insert(10);
         bst.insert(20);
         bst.insert(30);
