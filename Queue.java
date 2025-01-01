@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 class MyQueue<T> {
     private static class Node<T> {
         private T data;
@@ -67,5 +69,27 @@ class MyQueue<T> {
             current = current.next;
         }
         return sb.toString().trim();
+    }
+
+    public static void main(String[] args) {
+        MyQueue<Integer> queue = new MyQueue<>();
+
+        System.out.println("Enqueue elements: 10, 20, 30");
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        System.out.println("Queue: " + queue);
+
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Queue after dequeue: " + queue);
+
+        System.out.println("Peek: " + queue.peek());
+        System.out.println("Queue size: " + queue.size());
+
+        System.out.println("Dequeue remaining elements");
+        queue.dequeue();
+        queue.dequeue();
+
+        System.out.println("Is queue empty? " + queue.isEmpty());
     }
 }
