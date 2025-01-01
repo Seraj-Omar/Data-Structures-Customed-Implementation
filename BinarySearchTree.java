@@ -128,6 +128,36 @@ public class MyBST<T extends Comparable<T>> {
         }
     }
 
+    public void BFS() {
+        if (root == null) return;
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node<T> current = queue.poll();
+            System.out.print(current.data + " ");
+
+            if (current.left != null)
+                queue.add(current.left);
+            if (current.right != null)
+                queue.add(current.right);
+        }
+        System.out.println();
+    }
+
+    public void DFS() {
+        dfsRec(root);
+        System.out.println();
+    }
+
+    private void dfsRec(Node<T> node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            dfsRec(node.left);
+            dfsRec(node.right);
+        }
+    }
+
     public static void main(String[] args) {
         MyBST<Integer> bst = new MyBST<>();
         bst.insert(10);
@@ -149,6 +179,14 @@ public class MyBST<T extends Comparable<T>> {
 
         System.out.println("Post-order Traversal:");
         bst.postOrderTraversal();
+        System.out.println();
+
+        System.out.println("BFS Traversal:");
+        bst.BFS();
+        System.out.println();
+
+        System.out.println("DFS Traversal:");
+        bst.DFS();
         System.out.println();
 
         System.out.println("Search for 40: " + bst.search(40));
