@@ -62,4 +62,29 @@ class MyStack<T> {
         }
         printRecursive(index + 1);
     }
+
+    public static void main(String[] args) {
+        MyStack<Integer> stack = new MyStack<>();
+
+        System.out.println("Push elements: 10, 20, 30");
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.print();
+
+        System.out.println("Peek: " + stack.peek());
+
+        System.out.println("Pop: " + stack.pop());
+        stack.print();
+
+        System.out.println("Stack size: " + stack.size());
+
+        System.out.println("Is stack empty? " + stack.isEmpty());
+
+        System.out.println("Pop remaining elements");
+        stack.pop();
+        stack.pop();
+
+        System.out.println("Is stack empty? " + stack.isEmpty());
+    }
 }
