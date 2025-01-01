@@ -78,4 +78,37 @@ class MyCircularQueue<T> {
         }
         printRecursive(index + 1);
     }
+
+    public static void main(String[] args) {
+        MyCircularQueue<Integer> queue = new MyCircularQueue<>();
+
+        System.out.println("Enqueueing elements:");
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.enqueue(40);
+        queue.print();
+
+        System.out.println("\nDequeuing an element: " + queue.dequeue());
+        queue.print();
+
+        System.out.println("\nPeek at the front: " + queue.peek());
+
+        System.out.println("\nEnqueueing more elements:");
+        queue.enqueue(50);
+        queue.enqueue(60);
+        queue.print();
+
+        System.out.println("\nIs the queue full? " + queue.isFull());
+        System.out.println("Is the queue empty? " + queue.isEmpty());
+
+        System.out.println("\nSize of the queue: " + queue.size());
+
+        System.out.println("\nDequeuing all elements:");
+        while (!queue.isEmpty()) {
+            System.out.println("Dequeued: " + queue.dequeue());
+        }
+
+        System.out.println("\nIs the queue empty now? " + queue.isEmpty());
+    }
 }
