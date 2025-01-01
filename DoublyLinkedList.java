@@ -103,4 +103,27 @@ class MyDoublyLinkedList<T> {
         }
         System.out.println();
     }
+
+    public static void main(String[] args) {
+        MyDoublyLinkedList<Integer> list = new MyDoublyLinkedList<>();
+
+        list.addFirst(10);
+        list.addLast(20);
+        list.addFirst(5);
+        list.addLast(30);
+
+        System.out.println("Traverse forward:");
+        list.traverseForward();
+
+        System.out.println("Traverse backward:");
+        list.traverseBackward();
+
+        System.out.println("Remove first: " + list.removeFirst());
+        System.out.println("Remove last: " + list.removeLast());
+
+        System.out.println("Traverse forward after removals:");
+        list.traverseForward();
+
+        System.out.println("Size of the list: " + list.size());
+    }
 }
