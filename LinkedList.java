@@ -22,10 +22,11 @@ class MyLinkedList<T> {
         }
         size++;
     }
-    public boolean isEmpty()
-    {
-        return size==0;
+
+    public boolean isEmpty() {
+        return size == 0;
     }
+
     public T get(int index) {
         checkIndex(index);
         return getRecursive(head, index, 0);
@@ -106,5 +107,37 @@ class MyLinkedList<T> {
             System.out.print(", ");
         }
         printRecursive(node.next);
+    }
+
+    public static void main(String[] args) {
+        MyLinkedList<Integer> list = new MyLinkedList<>();
+
+        System.out.println("Adding elements:");
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.print();
+
+        System.out.println("Getting element at index 1: " + list.get(1));
+
+        System.out.println("Removing element at index 1:");
+        list.remove(1);
+        list.print();
+
+        System.out.println("Adding element 40:");
+        list.add(40);
+        list.print();
+
+        System.out.println("Removing element with value 40:");
+        list.remove(Integer.valueOf(40));
+        list.print();
+
+        System.out.println("Is list empty? " + list.isEmpty());
+        System.out.println("Size of list: " + list.size());
+
+        System.out.println("Removing all elements:");
+        list.remove(0);
+        list.remove(0);
+        System.out.println("Is list empty? " + list.isEmpty());
     }
 }
