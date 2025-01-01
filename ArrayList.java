@@ -71,4 +71,35 @@ class MyArrayList<T> {
         }
         printRecursive(index + 1);
     }
+
+    public static void main(String[] args) {
+        MyArrayList<Integer> list = new MyArrayList<>();
+
+        System.out.println("Adding elements:");
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        list.print();
+
+        System.out.println("\nSize of the list: " + list.size());
+
+        System.out.println("\nGetting element at index 2:");
+        System.out.println(list.get(2));
+
+        System.out.println("\nRemoving element at index 1:");
+        list.remove(1);
+        list.print();
+
+        System.out.println("\nRemoving element with value 30:");
+        list.remove(Integer.valueOf(30));
+        list.print();
+
+        System.out.println("\nSize of the list after removals: " + list.size());
+
+        System.out.println("\nAdding more elements:");
+        list.add(50);
+        list.add(60);
+        list.print();
+    }
 }
