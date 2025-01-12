@@ -37,24 +37,24 @@ public class AVLTree {
 
         int balance = getBalance(node);
 
-        // Left Left Case
+        // Left Left Case (LL)
         if (balance > 1 && key < node.left.key)
             return rightRotate(node);
 
 
-        // Right Right Case
+        // Right Right Case (RR)
         if (balance < -1 && key > node.right.key)
             return leftRotate(node);
 
 
-        // Left Right Case
+        // Left Right Case (LR)
         if (balance > 1 && key > node.left.key) {
             node.left = leftRotate(node.left);
             return rightRotate(node);
         }
 
 
-        // Right Left Case
+        // Right Left Case (RL)
         if (balance < -1 && key < node.right.key) {
             node.right = rightRotate(node.right);
             return leftRotate(node);
@@ -105,21 +105,21 @@ public class AVLTree {
 
         int balance = getBalance(node);
 
-        // Left Left Case
+        // Left Left Case (LL)
         if (balance > 1 && getBalance(node.left) >= 0)
             return rightRotate(node);
 
-        // Left Right Case
+        // Left Right Case (LR)
         if (balance > 1 && getBalance(node.left) < 0) {
             node.left = leftRotate(node.left);
             return rightRotate(node);
         }
 
-        // Right Right Case
+        // Right Right Case (RR)
         if (balance < -1 && getBalance(node.right) <= 0)
             return leftRotate(node);
 
-        // Right Left Case
+        // Right Left Case (RL)
         if (balance < -1 && getBalance(node.right) > 0) {
             node.right = rightRotate(node.right);
             return leftRotate(node);
@@ -130,8 +130,7 @@ public class AVLTree {
 
     private Node getMinValueNode(Node node) {
         Node current = node;
-        while (current.left != null) 
-        {
+        while (current.left != null) {
             current = current.left;
         }
         return current;
