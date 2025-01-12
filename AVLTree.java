@@ -1,12 +1,12 @@
-public class AVLTree {
+public class AVLTree<T extends Comparable<T>> {
 
     private class Node {
-        int key;
+        T key;
         int height;
         Node left;
         Node right;
 
-        Node(int key) {
+        Node(T key) {
             this.key = key;
             this.height = 1;
         }
@@ -14,19 +14,19 @@ public class AVLTree {
 
     private Node root;
 
-    public void insert(int key) {
+    public void insert(T key) {
         root = insert(root, key);
     }
 
-    private Node insert(Node node, int key) {
+    private Node insert(Node node, T key) {
 
         if (node == null)
             return new Node(key);
 
-        if (key < node.key)
+        if (key.compareTo(node.key) < 0)
             node.left = insert(node.left, key);
 
-        else if (key > node.key)
+        else if (key.compareTo(node.key) > 0)
             node.right = insert(node.right, key);
 
         else
@@ -38,24 +38,24 @@ public class AVLTree {
         int balance = getBalance(node);
 
         // Left Left Case (LL)
-        if (balance > 1 && key < node.left.key)
+        if (balance > 1 && key.compareTo(node.left.key) < 0)
             return rightRotate(node);
 
 
         // Right Right Case (RR)
-        if (balance < -1 && key > node.right.key)
+        if (balance < -1 && key.compareTo(node.right.key) > 0)
             return leftRotate(node);
 
 
         // Left Right Case (LR)
-        if (balance > 1 && key > node.left.key) {
+        if (balance > 1 && key.compareTo(node.left.key) > 0) {
             node.left = leftRotate(node.left);
             return rightRotate(node);
         }
 
 
         // Right Left Case (RL)
-        if (balance < -1 && key < node.right.key) {
+        if (balance < -1 && key.compareTo(node.right.key) < 0) {
             node.right = rightRotate(node.right);
             return leftRotate(node);
         }
@@ -63,20 +63,20 @@ public class AVLTree {
         return node;
     }
 
-    public void delete(int key) {
+    public void delete(T key) {
         root = delete(root, key);
     }
 
-    private Node delete(Node node, int key) {
+    private Node delete(Node node, T key) {
 
         if (node == null)
             return node;
 
 
-        if (key < node.key)
+        if (key.compareTo(node.key) < 0)
             node.left = delete(node.left, key);
 
-        else if (key > node.key)
+        else if (key.compareTo(node.key) > 0)
             node.right = delete(node.right, key);
 
         else 
@@ -183,7 +183,7 @@ public class AVLTree {
     }
 
     public static void main(String[] args) {
-        AVLTree tree = new AVLTree();
+        AVLTree<Integer> tree = new AVLTree<>();
 
         tree.insert(10);
         tree.insert(20);
