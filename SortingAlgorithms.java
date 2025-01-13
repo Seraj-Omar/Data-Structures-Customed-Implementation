@@ -79,7 +79,7 @@ public class SortingAlgorithms<T extends Comparable<T>> {
     }
 
     // Quick Sort
-    public static void quick(List<Long> v, int st, int en) {
+    public static void quickSort(List<Long> v, int st, int en) {
         int l = st, r = en;
         long p = v.get(0);//if we want the pivot to be the middle we use v.get((l+r)/2);
 
@@ -94,9 +94,9 @@ public class SortingAlgorithms<T extends Comparable<T>> {
         }
 
         if (l + 1 < en)
-            quick(v, l + 1, en);
+            quickSort(v, l + 1, en);
         if (r - 1 > st)
-            quick(v, st, r - 1);
+            quickSort(v, st, r - 1);
     }
 
     // Heap Sort
