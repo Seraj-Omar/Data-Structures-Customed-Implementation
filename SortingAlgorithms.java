@@ -79,29 +79,24 @@ public class SortingAlgorithms<T extends Comparable<T>> {
     }
 
     // Quick Sort
-    public void quickSort(T[] a, int l, int r) {
-        if (l < r) {
-            int pi = partition(a, l, r);
-            quickSort(a, l, pi - 1);
-            quickSort(a, pi + 1, r);
-        }
-    }
+    public static void quick(List<Long> v, int st, int en) {
+        int l = st, r = en;
+        long p = v.get(0);//if we want the pivot to be the middle we use v.get((l+r)/2);
 
-    private int partition(T[] a, int l, int r) {
-        T pivot = a[r];
-        int i = (l - 1);
-        for (int j = l; j < r; j++) {
-            if (a[j].compareTo(pivot) < 0) {
-                i++;
-                T temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
-            }
+        while (l < r) 
+        {
+            while (v.get(l) < p)
+                l++;
+            while (v.get(r) > p)
+                r--;
+            if (l < r)
+                Collections.swap(v, l, r);
         }
-        T temp = a[i + 1];
-        a[i + 1] = a[r];
-        a[r] = temp;
-        return i + 1;
+
+        if (l + 1 < en)
+            quick(v, l + 1, en);
+        if (r - 1 > st)
+            quick(v, st, r - 1);
     }
 
     // Heap Sort
